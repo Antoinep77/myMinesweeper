@@ -31,3 +31,39 @@
     transform: rotate(360deg);
   }
 }
+
+.cell{
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px solid white;
+  -webkit-user-select:none;
+  -khtml-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
+.unrevealed{
+  background-color: grey;
+}
+.center{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.revealed{
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  background-color: wheat;
+}
+.blue{
+  color: blue;
+}
+.green{
+  color:green;
+}
+.red{
+  color:red;
+}
