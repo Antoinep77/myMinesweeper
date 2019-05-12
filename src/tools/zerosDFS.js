@@ -9,6 +9,7 @@ let getNewBoard = (board,i,j) => {
     var newBoard = board.map(row => row.map(item => item));
     let stack = [];
     stack.push([i,j]);
+    newBoard[i][j].revealed =true;
     while (stack.length >0){
         var [k,l] = stack.pop();
         let currentCell = newBoard[k][l];

@@ -4,17 +4,20 @@ let randInt = (min,max) => Math.floor( (max-min)*Math.random() )
 
 
 let generateBombs = (rows, cols, bombsNumber) => {
-    if (bombsNumber > cols*rows){
-        throw new Error("To many bombs for the board.")
+    if (2*bombsNumber > cols*rows ){
+        throw new Error("Too many bombs for the board.")
     }
-    let bombs = [];
-    while (bombs.length< bombsNumber){
+    let bombs = new Set();
+    let bombList = [];
+    while (bombs.size< bombsNumber){
         let bombIndex = [randInt(0,rows-1),randInt(0,cols-1)];
-        if (!(bombIndex in bombs)){
-            bombs.push(bombIndex);
+        let bombHash = bombIndex[0]+";"+bombIndex[1]
+        if (!( bombs.has(bombHash))){
+            bombs.add(bombHash);
+            bombList.push(bombIndex);
         }
     }
-    return bombs
+    return bombList
 }
 
 let generateBoard = (rows,cols,bombsNumber) =>{

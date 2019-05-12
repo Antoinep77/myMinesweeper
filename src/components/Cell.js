@@ -1,12 +1,14 @@
 import React from 'react';
 import bomb from '../images/bomb.jpeg';
 import flag from '../images/flag.png';
+import explodingBomb from '../images/exploding_bomb.jpg';
 
 class Cell extends React.Component{
     imagesMap = {
         bomb: <img class="cell" alt="bomb" src={bomb} />,
         flag: <img class="cell unrevealed" alt="flag" src={flag} />,
         default: <div class= "cell unrevealed"></div>,
+        expodingBomb: <img class="cell" alt="exploding bomb" src={explodingBomb} />,
         number: (neighbours) =>{
             if (neighbours===0)
                 return <div class= "cell revealed"></div>
@@ -35,12 +37,18 @@ class Cell extends React.Component{
     }
 
     render(){
+        var cellElement;
+        if (this.props.cellStatus.revealed){
+            cellElement = this.props.cellStatus.isBomb ? 
+            (this.props.cellStatus.exploding ? this.imagesMap["expodingBomb"]: this.imagesMap["bomb"] )
+            : this.imagesMap["number"](this.props.cellStatus.neighbours)
+
+        }else{
+            cellElement = this.props.cellStatus.disactivated?  this.imagesMap["flag"]:this.imagesMap["default"]
+        }
         return (
             <div onClick= {this.handleLeftClick} onContextMenu= {this.handleRightClick}> 
-                {this.props.cellStatus.revealed ?
-                (this.props.cellStatus.isBomb ? this.imagesMap["bomb"] : this.imagesMap["number"](this.props.cellStatus.neighbours)) 
-                : (this.props.cellStatus.disactivated?  this.imagesMap["flag"]:this.imagesMap["default"])
-            }
+                {cellElement}
             </div> 
         )
     }
