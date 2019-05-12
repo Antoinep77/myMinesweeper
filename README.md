@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## How to play
+
+Use Left Click to reveal a cell and right click to desactivate a cell.
+Try to not click on the bombs.
+
 ## Available Scripts
 
 In the project directory, you can run:
